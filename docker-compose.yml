@@ -1,0 +1,52 @@
+version: "3"
+services:
+  api:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: images/api/Dockerfile
+    container_name: qays_api
+    depends_on:
+      - database
+    working_dir: /home/node/app
+    volumes:
+      - .:/home/node/app
+    command: ${API_NODE_COMMAND}
+    ports:
+      - ${API_PORT}:15031
+    links:
+      - database
+    networks:
+      - app-network
+  database:
+    container_name: qays_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DATABASE}
+    volumes:
+      - ./postgres-data:/data/postgres
+    ports:
+      - ${POSTGRES_PORT}:5432
+    networks:
+      - app-network
+  adminer:
+    image: adminer
+    container_name: qays_adminer
+    restart: always
+    ports:
+      - ${ADMINER_PORT}:8080
+    links:
+      - database
+    networks:
+      - app-network
+    tty: true
+volumes:
+  node_modules: {}
+  data:
+    driver: local
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,45 @@
+{
+  "name": "qays-api",
+  "version": "0.0.1",
+  "description": "API for Qays Landing",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "db-migrate": "^0.11.11",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-group-routes": "^1.1.0",
+    "http-errors": "^1.8.0",
+    "module-alias": "^2.2.2",
+    "pg": "^8.5.1",
+    "swagger-jsdoc": "^5.0.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "start": "ENVIROMENT=production nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/qays-cashier/qays-backend.git"
+  },
+  "author": "Fahrul Fauzi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/qays-cashier/qays-backend.git/issues"
+  },
+  "homepage": "https://gitlab.com/qays-cashier/qays-backend.git#readme",
+  "_moduleAliases": {
+    "@root": ".",
+    "@middleware": "src/middlewares",
+    "@app": "src/apps",
+    "@utils": "src/utils",
+    "@public": "public"
+  }
+}

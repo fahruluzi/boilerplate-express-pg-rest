@@ -1,0 +1,44 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "swagger": "2.0",
+      "title": "Qays API",
+      "version": "1.0.0",
+      "description": "This is a API for Qays made with Express and documented with Swagger",
+      "license": {
+        "name": "MIT"
+      },
+      "contact": {
+        "name": "Qays",
+        "email": "qaysindonesia@gmail.com"
+      }
+    },
+    "components": {
+      "securitySchemes":{
+        "api_key": {
+          "type": "apiKey",
+          "name": "access_token",
+          "in": "header"
+        }      
+      }
+    },
+    "servers": [
+      {
+        "url": "http://localhost:15031/api"
+      }
+    ]
+  },
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "access_token",
+      "in": "header"
+    }
+  },
+  "apis": [
+    "./routes/api.js",
+    "./src/apps/users/users.model.js",
+    "./src/apps/auth/auth.route.js"
+  ]
+}
